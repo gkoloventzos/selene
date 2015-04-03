@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^turn_left/','selene.views.turn_left',name='turn_left'),
     url(r'^turn_right/','selene.views.turn_right',name='turn_right'),
     url(r'^u_turn/','selene.views.u_turn',name='u_turn'),
-    url(r'^turn/(?P<pk>[0-9]+)$',,name='turn'),
+    url(r'^turn/(?P<pk>[0-9]+)$','selene.views.turn',name='turn'),
 ]

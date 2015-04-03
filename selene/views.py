@@ -19,13 +19,28 @@ def turn(request):
   pass
 @api_view(['GET'])
 def u_turn(request):
-  pass
+  if request.method == 'GET':
+    r = create.Create('/dev/tty.ElementSerial-ElementSe')
+    r.go(0, 45)
+    time.sleep(4)
+    r.stop()
+  return
 @api_view(['GET'])
 def turn_left(request):
-  pass
+  if request.method == 'GET':
+    r = create.Create('/dev/tty.ElementSerial-ElementSe')
+    r.go(0, 45)
+    time.sleep(2)
+    r.stop()
+  return
 @api_view(['GET'])
 def turn_right(request):
-  pass
+  if request.method == 'GET':
+    r = create.Create('/dev/tty.ElementSerial-ElementSe')
+    r.go(0, -45)
+    time.sleep(2)
+    r.stop()
+  return
 @api_view(['GET'])
 def turn(request):
   pass

@@ -46,3 +46,14 @@ def turn_right(request):
     r.stop()
     response = JsonResponse({'response': 200})
   return response
+def walk_back():
+  u_turn()
+@api_view(['GET'])
+def wwalk(request):
+  if request.method == 'GET':
+    r = create.Create('/dev/tty.ElementSerial-ElementSe')
+    r.sense()
+    thistime = time.time()
+    while (r.bump_left or r.bump_right) and ttime:
+      
+      r.sense()

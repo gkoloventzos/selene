@@ -23,8 +23,8 @@ def turn(request):
 def u_turn(request):
   if request.method == 'GET':
     r = create.Create('/dev/tty.ElementSerial-ElementSe')
-    r.go(0, 45)
-    time.sleep(4)
+    r.go(0, 180)
+    time.sleep(1)
     r.stop()
     response = JsonResponse({'response': 200})
   return response

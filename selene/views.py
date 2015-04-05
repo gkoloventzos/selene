@@ -32,8 +32,8 @@ def u_turn(request):
 def turn_left(request):
   if request.method == 'GET':
     r = create.Create('/dev/tty.ElementSerial-ElementSe')
-    r.go(0, 45)
-    time.sleep(2)
+    r.go(0, 90)
+    time.sleep(1)
     r.stop()
     response = JsonResponse({'response': 200})
   return response
@@ -41,8 +41,8 @@ def turn_left(request):
 def turn_right(request):
   if request.method == 'GET':
     r = create.Create('/dev/tty.ElementSerial-ElementSe')
-    r.go(0, -45)
-    time.sleep(2)
+    r.go(0, -90)
+    time.sleep(1)
     r.stop()
     response = JsonResponse({'response': 200})
   return response

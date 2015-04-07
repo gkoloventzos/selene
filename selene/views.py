@@ -5,14 +5,21 @@ from rest_framework.response import Response
 from django.http import JsonResponse
 import create
 import time
+import random
+
+def drive(robot,meters=1):
+  actual_meters = meters*100
+  seconds = actual_meters/50
+  for i in range(seconds):
+    robot.go(50)
+    time.sleep(1)
 
 # Create your views here.
 @api_view(['GET'])
 def walk(request):
   if request.method == 'GET':
     r = create.Create('/dev/tty.ElementSerial-ElementSe')
-    r.go(10)
-    time.sleep(1)
+    drive(r)
     r.stop()
     response = JsonResponse({'response': 200})
   return response
@@ -54,6 +61,6 @@ def wwalk(request):
     r = create.Create('/dev/tty.ElementSerial-ElementSe')
     r.sense()
     thistime = time.time()
-    while (r.bump_left or r.bump_right) and ttime:
-      
+    while (r.bump_left or r.bump_right):
+      r.drive(50)
       r.sense()

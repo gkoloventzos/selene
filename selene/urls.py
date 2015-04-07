@@ -7,7 +7,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^walk/','selene.views.walk',name='walk'),
+    url(r'^walk/','selene.views.wwalk',name='wwalk'),
     url(r'^walk/(?P<pk>[0-9]+)$','selene.views.walk_that',name='walk_that'),
     url(r'^turn_left/','selene.views.turn_left',name='turn_left'),
     url(r'^turn_right/','selene.views.turn_right',name='turn_right'),

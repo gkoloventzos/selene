@@ -10,7 +10,7 @@ import random
 def drive(robot,meters=1):
   actual_meters = meters*100
   seconds = actual_meters/50
-  for i in range(seconds):
+  for i in range(int(seconds)):
     robot.go(50)
     time.sleep(1)
 

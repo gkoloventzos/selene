@@ -7,22 +7,16 @@ import create
 import time
 import random
 
-def drive(robot,meters=1):
-  actual_meters = meters*100
-  seconds = actual_meters/50
-  for i in range(int(seconds)):
-    robot.go(50)
-    time.sleep(1)
-
 # Create your views here.
 @api_view(['GET'])
 def walk(request):
-  if request.method == 'GET':
-    r = create.Create('/dev/tty.ElementSerial-ElementSe')
-    drive(r)
-    r.stop()
-    response = JsonResponse({'response': 200})
-  return response
+   if request.method == 'GET':
+      r = create.Create('/dev/tty.ElementSerial-ElementSe')
+      done = r.walk()
+      if not done:
+         return JsonResponse({'response': 503})
+      return JsonResponse({'response': 200})
+   return JsonResponse({'response': 404})
 @api_view(['GET'])
 def turn(request):
   pass

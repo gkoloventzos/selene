@@ -53,8 +53,29 @@ def walk_back():
 def wwalk(request):
   if request.method == 'GET':
     r = create.Create('/dev/tty.ElementSerial-ElementSe')
-    r.sense()
-    thistime = time.time()
-    while (r.bump_left or r.bump_right):
-      r.drive(50)
-      r.sense()
+    time_need = distance*10
+    r.go(10)
+    st = int(round(time.time()))
+    print(st)
+    ft = st + time_need
+    bump=r.getSensor('BUMPS_AND_WHEEL_DROPS')
+    rt = st
+    print(bump, ft, rt)
+    while ft > rt and ((bump[3] !=1 and bump[4]!=1)):
+       bump=r.getSensor('BUMPS_AND_WHEEL_DROPS')
+       rt = int(round(time.time()))
+       print(bump,ft,rt)
+    print("I am about to stop")
+    r.stop()
+    r.go(0,0)
+    if bump[3]==1 or bump[4]==1:
+       print(rt-st)
+       r.go(0,45)
+       time.sleep(4)
+       r.stop()
+       r.go(10)
+       time.sleep(rt-st)
+       r.stop()
+       r.go(0,45)
+       time.sleep(4)
+       r.stop()

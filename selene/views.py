@@ -48,6 +48,6 @@ def wwalk(request):
   if request.method == 'GET':
     distance=1
     r = create.Create('/dev/tty.ElementSerial-ElementSe')
-    if (r.walk())
+    if (r.walk()):
        return JsonResponse({'response': 200})
     return JsonResponse({'response': 503})

@@ -10,8 +10,8 @@ urlpatterns = [
     url(r'^walk/','selene.views.walk',name='walk'),
     url(r'^wwalk/','selene.views.wwalk',name='wwalk'),
     url(r'^walk/(?P<pk>[0-9]+)$','selene.views.walk_that',name='walk_that'),
-    url(r'^turn_left/','selene.views.turn_left',name='turn_left'),
-    url(r'^turn_right/','selene.views.turn_right',name='turn_right'),
+    url(r'^walk_left/','selene.views.walk_left',name='walk_left'),
+    url(r'^wlak_right/','selene.views.walk_right',name='walk_right'),
     url(r'^u_turn/','selene.views.u_turn',name='u_turn'),
     url(r'^turn/(?P<pk>[0-9]+)$','selene.views.turn',name='turn'),
 ]
